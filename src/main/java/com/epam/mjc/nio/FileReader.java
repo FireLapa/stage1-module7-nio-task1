@@ -18,8 +18,7 @@ public class FileReader {
                     sb.append((char)content);
                 }
             } while (content != -1);
-            String text = sb.toString();
-            x = text.split("\r?\n|\r|: ");
+            x = sb.toString().split("\r?\n|\r|: ");
         } catch (IOException e) {
             e.printStackTrace();
         }
