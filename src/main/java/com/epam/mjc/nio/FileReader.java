@@ -4,20 +4,22 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.Arrays;
 
 public class FileReader {
 
     public Profile getDataFromFile(File file) {
         int content;
         String[] x = new String[8];
-        String text = new String();
+        StringBuilder sb = new StringBuilder();
         try (InputStream inputStream = Files.newInputStream(file.toPath())) {
             do {
                 content = inputStream.read();
                 if (content != -1) {
-                    text = text + (char) content;
+                    sb.append((char)content);
                 }
             } while (content != -1);
+            String text = sb.toString();
             x = text.split("\r?\n|\r|: ");
         } catch (IOException e) {
             e.printStackTrace();
